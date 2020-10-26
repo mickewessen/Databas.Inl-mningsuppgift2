@@ -26,5 +26,16 @@ namespace Databas.Inlämningsuppgift2.Views
         {
             this.InitializeComponent();
         }
+
+        private void btnListCompleted_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        private void btnListOpen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

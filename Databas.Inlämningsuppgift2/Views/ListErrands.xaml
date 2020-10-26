@@ -6,9 +6,29 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="800">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,21,0,0"  Text="List all opened errands" TextWrapping="Wrap" 
+                   VerticalAlignment="Top" Height="34" TextAlignment="Center" HorizontalAlignment="Center" Padding="10"/>        
+        <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,21,0,0"  Text="List all closed errands" TextWrapping="Wrap" 
+                   VerticalAlignment="Top" Height="34" TextAlignment="Center" HorizontalAlignment="Center" Padding="10"/>
+        
+        <Button x:Name="btnListClosed" Grid.Column="1" Grid.Row="0" Content="Completed" HorizontalAlignment="Center" Height="66" Width="194" Click="btnListClosed_Click"/>
+        <Button x:Name="btnListOpen" Grid.Column="0" Grid.Row="0" Content="Pending" HorizontalAlignment="Center" Height="66" Width="194" Click="btnListOpen_Click"/>
+
+        <ListView x:Name="lvOpen"  Grid.Row="1" Grid.Column="0" Margin="10">            
+        </ListView>
+        <ListView x:Name="lvClosed"  Grid.Row="1" Grid.Column="1" Margin="10">
+        </ListView>
     </Grid>
 </Page>

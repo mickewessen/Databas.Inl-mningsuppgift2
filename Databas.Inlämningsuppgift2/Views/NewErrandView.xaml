@@ -35,13 +35,12 @@
 
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
             <ComboBox x:Name="Status" HorizontalAlignment="Left" 
-                     Margin="10,10,0,0" PlaceholderText="Change status..." Height="34" Width="250" TabIndex="6">
-                <x:String>Pending</x:String>
-                <x:String>Ongoing</x:String>
-                <x:String>Completed</x:String>
+                     Margin="10,10,0,0" PlaceholderText="Status..." Height="34" Width="250" TabIndex="6">
+                <x:String>Active</x:String>
+                <x:String>Closed</x:String>
             </ComboBox>
             <ComboBox x:Name="Category" HorizontalAlignment="Left" 
-                     Margin="10,10,0,0" PlaceholderText="Change status..." Height="34" Width="250" TabIndex="7">
+                     Margin="10,10,0,0" PlaceholderText="Category..." Height="34" Width="250" TabIndex="7">
                 <x:String>Login</x:String>
                 <x:String>Internet</x:String>
                 <x:String>Printer</x:String>
@@ -56,6 +55,8 @@
                 FontSize="15" Padding="10" Margin="10,141,0,0" VerticalAlignment="Top" Click="btnCreate_Click"/>
         <TextBox x:Name="Description" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Column="0"
                      Grid.Row="1" PlaceholderText="Description" TextWrapping="Wrap" VerticalAlignment="Top" Height="731" Width="461" BorderThickness="1" TabIndex="5"/>
+        <Button x:Name="btnReset" Grid.Column="1" Grid.Row="1" Height="49" Width="250" Content="Reset" 
+                FontSize="15" Padding="10" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnReset_Click"/>
 
     </Grid>
 </Page>

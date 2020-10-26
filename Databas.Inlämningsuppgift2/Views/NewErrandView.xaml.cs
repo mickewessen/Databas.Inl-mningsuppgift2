@@ -28,10 +28,25 @@ namespace Databas.Inlämningsuppgift2.Views
             
         }
 
+
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            Services.ErrandService.CreateErrandAsync("detta är ett test",DateTime.Now,"Michael","Wessen","micke.wessen@hotmail.com",0738142092, "Pending", "Internet", "Samuel Wessen").GetAwaiter();
+            try
+            {
+                Services.ErrandService.CreateErrandAsync(Description.Text, DateTime.Now, FirstName.Text, LastName.Text, Email.Text, Convert.ToInt32(Phonenumber.Text), Status.Text, Category.Text, CreatedBy.Text).GetAwaiter();
+
+            }
+            catch{ }
         }
 
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            Description.Text = "";
+            FirstName.Text = "";
+            LastName.Text = "";
+            Email.Text = "";
+            Phonenumber.Text = "";
+            CreatedBy.Text = "";
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Databas.Inlämningsuppgift2.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,13 +29,26 @@ namespace Databas.Inlämningsuppgift2.Views
             
         }
 
+        public string GetStatus()
+        {
+            string statusText = this.Status.SelectionBoxItem.ToString();
+
+            return statusText;
+        }
+        public string GetCategory()
+        {
+            string categoryText = this.Category.SelectionBoxItem.ToString();
+
+            return categoryText;
+        }
+
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Services.ErrandService.CreateErrandAsync(Description.Text, DateTime.Now, FirstName.Text, LastName.Text, Email.Text, Convert.ToInt32(Phonenumber.Text), Status.Text, Category.Text, CreatedBy.Text).GetAwaiter();
-
+                Services.ErrandService.CreateErrandAsync(Description.Text, DateTime.Now, FirstName.Text, LastName.Text, Email.Text, Convert.ToInt32(Phonenumber.Text), GetStatus(), GetCategory(), CreatedBy.Text).GetAwaiter();
+                msglabel.Visibility = Visibility.Visible;
             }
             catch{ }
         }
@@ -47,6 +61,8 @@ namespace Databas.Inlämningsuppgift2.Views
             Email.Text = "";
             Phonenumber.Text = "";
             CreatedBy.Text = "";
+            msglabel.Visibility = Visibility.Collapsed;
         }
+
     }
 }

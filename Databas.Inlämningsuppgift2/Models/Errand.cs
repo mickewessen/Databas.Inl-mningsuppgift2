@@ -20,6 +20,14 @@ namespace Databas.Inlämningsuppgift2.Models
             Createdby = createdby;
         }
 
+        public Errand(int id, string status, string category, string createdby)
+        {
+            Id = id;
+            Status = status;
+            Category = category;
+            Createdby = createdby;
+        }
+
         [Key]
         public int Id { get; set; }
         [Required]

@@ -3,8 +3,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Databas.Inlämningsuppgift2.Views"
+    xmlns:localmodels ="using:Databas.Inlämningsuppgift2.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="800">
 
@@ -13,22 +14,55 @@
             <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400"/>
-            <ColumnDefinition Width="400"/>
-        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBlock Grid.Row="0" Margin="10"  Text="List all open errands" TextWrapping="Wrap" 
+                   VerticalAlignment="Top" Height="34" TextAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
+            <TextBlock Grid.Row="0" Margin="10"  Text="List all closed errands" TextWrapping="Wrap" 
+                   VerticalAlignment="Top" Height="34" TextAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
+        </StackPanel>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,21,0,0"  Text="List all opened errands" TextWrapping="Wrap" 
-                   VerticalAlignment="Top" Height="34" TextAlignment="Center" HorizontalAlignment="Center" Padding="10"/>        
-        <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,21,0,0"  Text="List all closed errands" TextWrapping="Wrap" 
-                   VerticalAlignment="Top" Height="34" TextAlignment="Center" HorizontalAlignment="Center" Padding="10"/>
-        
-        <Button x:Name="btnListClosed" Grid.Column="1" Grid.Row="0" Content="Completed" HorizontalAlignment="Center" Height="66" Width="194" Click="btnListClosed_Click"/>
-        <Button x:Name="btnListOpen" Grid.Column="0" Grid.Row="0" Content="Pending" HorizontalAlignment="Center" Height="66" Width="194" Click="btnListOpen_Click"/>
-
-        <ListView x:Name="lvOpen"  Grid.Row="1" Grid.Column="0" Margin="10">            
-        </ListView>
-        <ListView x:Name="lvClosed"  Grid.Row="1" Grid.Column="1" Margin="10">
-        </ListView>
+        <RelativePanel Grid.Row="1" Grid.Column="0">
+            <ListView x:Name="lvOpen"
+                  SelectionMode="Single"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.IsVerticalRailEnabled="True"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.IsHorizontalRailEnabled="True"
+                  Margin="20">
+                <ListView.HeaderTemplate>
+                    <DataTemplate >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ID" Margin="8,0" Width="30" Foreground="DarkRed" />
+                            <TextBlock Text="Category" Margin="8,0" Width="70" Foreground="DarkRed" />
+                            <TextBlock Text="Status" Margin="8,0" Width="70" Foreground="DarkRed" />
+                            <TextBlock Text="Description" Margin="8,0" Width="70" Foreground="DarkRed" />
+                            <TextBlock Text="Firstname" Margin="8,0" Width="70" Foreground="DarkRed" />
+                            <TextBlock Text="Lastname" Margin="8,0" Width="70" Foreground="DarkRed" />
+                            <TextBlock Text="Created by" Margin="8,0" Width="70" Foreground="DarkRed" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="localmodels:Errand">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="Id"
+                                       Text="{Binding Id}"
+                                       Width="50"/>
+                            <TextBlock Name="Category"
+                                       Text="{Binding Category}"
+                                       Width="50"/>
+                            <TextBlock Name="Status"
+                                       Text="{Binding Status}"
+                                       Width="50"/>
+                            <TextBlock Name="Createdby"
+                                       Text="{Binding Createdby}"
+                                       Width="50"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </RelativePanel>
     </Grid>
 </Page>

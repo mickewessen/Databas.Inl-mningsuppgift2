@@ -5,11 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Databas.Inlämningsuppgift2.Models;
+using System.Collections.ObjectModel;
+using Microsoft.Data.SqlClient;
 
 namespace Databas.Inlämningsuppgift2.Services
 {
     public static class ErrandService
     {
+
         public static async Task CreateErrandAsync(string description, DateTime creationTime, string customerFirstName, string customerLastName, string customerEmail, int? customerPhonenumber, string status, string category, string createdby)
         {
             using DataContext context = new DataContext();
@@ -18,11 +21,18 @@ namespace Databas.Inlämningsuppgift2.Services
             await context.SaveChangesAsync();
         }
 
-        //public static async Task<IEnumerable<Errand>> GetErrandsAsync()
+        //public static async ObservableCollection<Errand> GetErrandsAsync()
         //{
         //    using DataContext context = new DataContext();
+        //    { }
 
-        //    return await context.Errands.ToListAsync();
+
+
+        //    return await context.Errand.ToListAsync();
+
+
+
+
         //}
 
         //public static async Task<Errand> GetErrandAsync(int id)

@@ -48,7 +48,7 @@ namespace Databas.Inlämningsuppgift2.Views
             try
             {
                 Services.ErrandService.CreateErrandAsync(Description.Text, DateTime.Now, FirstName.Text, LastName.Text, Email.Text, Convert.ToInt32(Phonenumber.Text), GetStatus(), GetCategory(), CreatedBy.Text).GetAwaiter();
-                msglabel.Visibility = Visibility.Visible;
+                createlabel.Visibility = Visibility.Visible;
             }
             catch{ }
         }
@@ -61,7 +61,7 @@ namespace Databas.Inlämningsuppgift2.Views
             Email.Text = "";
             Phonenumber.Text = "";
             CreatedBy.Text = "";
-            msglabel.Visibility = Visibility.Collapsed;
+            createlabel.Visibility = Visibility.Collapsed;
         }
 
     }

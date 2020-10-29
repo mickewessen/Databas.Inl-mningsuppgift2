@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Databas.Inlämningsuppgift2.Models;
 using System.Collections.ObjectModel;
 using Microsoft.Data.SqlClient;
+using Windows.UI.Xaml.Controls;
+using Databas.Inlämningsuppgift2.Views;
 
 namespace Databas.Inlämningsuppgift2.Services
 {
@@ -21,18 +23,21 @@ namespace Databas.Inlämningsuppgift2.Services
             await context.SaveChangesAsync();
         }
 
-        //public static async ObservableCollection<Errand> GetErrandsAsync()
+        //public static async Task<IEnumerable<Errand>> GetErrandsAsync()
         //{
         //    using DataContext context = new DataContext();
-        //    { }
 
+        //    var output = await context.Errand.ToListAsync();
+        //    return output;
+        //}
 
-
-        //    return await context.Errand.ToListAsync();
-
-
-
-
+        //private static async Task ListAllErrandsAsync()
+        //{
+        //    var errands = await GetErrandsAsync();
+        //    foreach (var errand in errands)
+        //    {
+                
+        //    }
         //}
 
         //public static async Task<Errand> GetErrandAsync(int id)
@@ -49,19 +54,20 @@ namespace Databas.Inlämningsuppgift2.Services
         //    return await context.Errands.Where(Errand => Errand.Completed == completed).ToListAsync();
         //}
 
-        //public static async Task UpdateErrandAsync(int id)
-        //{
-        //    using DataContext context = new DataContext();
+        public static async Task UpdateErrandAsync(int id, string status, string comment)
+        {
+            using DataContext context = new DataContext();
 
-        //    var Errand = await context.Errands.FindAsync(id);
+            var Errand = await context.Errand.FindAsync(id);
 
-        //    if (Errand != null)
-        //    {
-        //        Errand.Completed = true;
-        //        context.Entry(Errand).State = EntityState.Modified;
-        //        await context.SaveChangesAsync();
-        //    }
-        //}
+            if (Errand != null)
+            {
+                Errand.Status = status;
+                Errand.Comment = comment;
+                context.Entry(Errand).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+            }
+        }
 
         //public static async Task RemoveErrandAsync(int id)
         //{

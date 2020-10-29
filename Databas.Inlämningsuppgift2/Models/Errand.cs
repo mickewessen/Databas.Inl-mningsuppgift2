@@ -17,16 +17,17 @@ namespace Databas.Inlämningsuppgift2.Models
             CustomerPhonenumber = customerPhonenumber;
             Status = status;
             Category = category;
-            Createdby = createdby;
+            Createdby = createdby;            
         }
 
-        public Errand(int id, string status, string category, string createdby)
+        public Errand(string description,string status, string category, string comment)
         {
-            Id = id;
+            Description = description;
             Status = status;
             Category = category;
-            Createdby = createdby;
+            Comment = comment;
         }
+
 
         [Key]
         public int Id { get; set; }
@@ -54,5 +55,7 @@ namespace Databas.Inlämningsuppgift2.Models
         [Required]
         [StringLength(50)]
         public string Createdby { get; set; }
+        [StringLength(100)]
+        public string Comment { get; set; }
     }
 }

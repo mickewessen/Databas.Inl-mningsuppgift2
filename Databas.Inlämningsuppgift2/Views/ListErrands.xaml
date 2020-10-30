@@ -11,7 +11,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
-            <RowDefinition Height="500"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
@@ -24,7 +24,7 @@
             <Button x:Name="btnClosed" Content="Show closed errands" Margin="10"/>
         </StackPanel>
 
-        <RelativePanel Grid.Row="1" Width="1200">
+        <RelativePanel Grid.Row="1" Width="1200" Margin="10">
             <ListView x:Name="lvActive"
                       Width="1200"
                   SelectionMode="Single"

@@ -50,7 +50,7 @@ namespace Databas.Inlämningsuppgift2.Views
 
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
-            lvActive.ItemsSource = ErrandService.GetErrands((Application.Current as App).connectionString);
+            lvActive.ItemsSource = ErrandService.GetErrandsActive((Application.Current as App).connectionString);
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -61,8 +61,11 @@ namespace Databas.Inlämningsuppgift2.Views
                 updatelabel.Visibility = Visibility.Visible;
             }
             catch { }
-        }       
+        }
 
-
+        private void btnClosed_Click(object sender, RoutedEventArgs e)
+        {
+            lvActive.ItemsSource = ErrandService.GetErrandsClosed((Application.Current as App).connectionString);
+        }
     }
 }

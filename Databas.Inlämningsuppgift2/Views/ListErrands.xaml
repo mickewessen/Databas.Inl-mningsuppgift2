@@ -21,7 +21,7 @@
             <Button x:Name="btnOpen" Content="Show active errands" Margin="10"  Click="btnOpen_Click"/>
             <TextBlock Grid.Row="0" Margin="10,5,0,0"  Text="List all closed errands" TextWrapping="Wrap" 
                    VerticalAlignment="Top" Height="34" TextAlignment="Center" HorizontalAlignment="Left" Padding="10"/>
-            <Button x:Name="btnClosed" Content="Show closed errands" Margin="10"/>
+            <Button x:Name="btnClosed" Content="Show closed errands" Margin="10" Click="btnClosed_Click"/>
         </StackPanel>
 
         <RelativePanel Grid.Row="1" Width="1200" Margin="10">

@@ -88,9 +88,9 @@ namespace Databas.Inlämningsuppgift2.Services
             }
         }
 
-        public static ObservableCollection<Errand> GetErrands(string connectionString)
+        public static ObservableCollection<Errand> GetErrandsActive(string connectionString)
         {
-            const string GetErrandsQuery = "select * from Errand";
+            const string GetErrandsQuery = "SELECT * FROM ERRAND WHERE Status !='Closed'";
 
             var errands = new ObservableCollection<Errand>();
             try
@@ -129,6 +129,51 @@ namespace Databas.Inlämningsuppgift2.Services
             catch
             {
                 
+            }
+            return null;
+        }
+
+        public static ObservableCollection<Errand> GetErrandsClosed(string connectionString)
+        {
+            const string GetErrandsQuery = "SELECT * FROM ERRAND WHERE Status ='Closed'";
+
+            var errands = new ObservableCollection<Errand>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.CommandText = GetErrandsQuery;
+                            using (SqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    var errand = new Errand();
+                                    errand.Id = reader.GetInt32(0);
+                                    errand.Description = reader.GetString(1);
+                                    errand.CreationTime = reader.GetDateTime(2);
+                                    errand.CustomerFirstName = reader.GetString(3);
+                                    errand.CustomerLastName = reader.GetString(4);
+                                    errand.CustomerEmail = reader.GetString(5);
+                                    errand.CustomerPhonenumber = reader.GetInt32(6);
+                                    errand.Status = reader.GetString(7);
+                                    errand.Category = reader.GetString(8);
+                                    errand.Createdby = reader.GetString(9);
+                                    errands.Add(errand);
+                                }
+                            }
+                        }
+                    }
+                }
+                return errands;
+            }
+            catch
+            {
+
             }
             return null;
         }

@@ -6,19 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="1000">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="auto">
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="800"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Padding="5">
             <Button x:Name="btnAdd" Content="Add New Errand" HorizontalAlignment="Stretch" Padding="10" Margin="0,20" FontSize="20" Click="btnAdd_Click"/>
             <Button x:Name="btnListErrands" Content="List Errands" HorizontalAlignment="Stretch" Padding="10" Margin="0,20" FontSize="20" Click="btnListErrands_Click"/>
         </StackPanel>
-        <Frame x:Name="frame"  Grid.Column="1" Margin="10" Width="780" Height="auto"/>
+        <Frame x:Name="frame"  Grid.Column="1" Margin="10" Width="auto" Height="auto"/>
 
 
     </Grid>

@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="900">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="auto">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -24,8 +24,9 @@
             <Button x:Name="btnClosed" Content="Show closed errands" Margin="10"/>
         </StackPanel>
 
-        <RelativePanel Grid.Row="1">
-            <ListView x:Name="lvOpen"
+        <RelativePanel Grid.Row="1" Width="1200">
+            <ListView x:Name="lvActive"
+                      Width="1200"
                   SelectionMode="Single"
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                   ScrollViewer.IsVerticalRailEnabled="True"
@@ -33,63 +34,63 @@
                   ScrollViewer.HorizontalScrollMode="Enabled"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.IsHorizontalRailEnabled="True"
-                  Margin="10">
+                  >
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Id" Margin="8,0" Width="20"/>
-                            <TextBlock Text="Category" Margin="8,0" Width="70"/>
-                            <TextBlock Text="Status" Margin="8,0" Width="70"/>
-                            <TextBlock Text="Description" Margin="8,0" Width="70"/>
-                            <TextBlock Text="Firstname" Margin="8,0" Width="70"/>
-                            <TextBlock Text="Lastname" Margin="8,0" Width="70"/>
-                            <TextBlock Text="Email" Margin="8,0" Width="70"/>
-                            <TextBlock Text="Phonenr" Margin="8,0" Width="70"/>
-                            <TextBlock Text="Createdby" Margin="8,0" Width="70"/>
-                            <TextBlock Text="Created" Margin="8,0" Width="50"/>
+                            <TextBlock Text="Id" Width="20" Margin="20,10,10,10" FontWeight="Bold"/>
+                            <TextBlock Text="Category" Width="70" Margin="10" FontWeight="Bold"/>
+                            <TextBlock Text="Status" Width="50" Margin="10" FontWeight="Bold"/>
+                            <TextBlock Text="Description" Width="150" Margin="10" FontWeight="Bold"/>
+                            <TextBlock Text="Firstname" Width="80" Margin="10" FontWeight="Bold"/>
+                            <TextBlock Text="Lastname" Width="80" Margin="10" FontWeight="Bold"/>
+                            <TextBlock Text="Email" Width="180" Margin="10" FontWeight="Bold"/>
+                            <TextBlock Text="Phonenr" Width="100" Margin="10" FontWeight="Bold"/>
+                            <TextBlock Text="Createdby" Width="100" Margin="10" FontWeight="Bold"/>
+                            <TextBlock Text="Created" Width="150" Margin="10" FontWeight="Bold"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.HeaderTemplate>                
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:Errand">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Name="ID"
-                                       Text="{Binding Id}"
+                            <TextBlock Name="ID" Margin="10" 
+                                       Text="{x:Bind Id}"
                                        Width="20"/>
-                            <TextBlock Name="Category"
-                                       Text="{Binding Category}"
+                            <TextBlock Name="Category" Margin="10"
+                                       Text="{x:Bind Category}"
                                        Width="70"/>
-                            <TextBlock Name="Status"
-                                       Text="{Binding Status}"
-                                       Width="70"/>
-                            <TextBlock Name="Description"
-                                       Text="{Binding Description}"
-                                       Width="120"/>
-                            <TextBlock Name="Firstname"
-                                       Text="{Binding CustomerFirstName}"
-                                       Width="70"/>
-                            <TextBlock Name="Lastname"
-                                       Text="{Binding CustomerLastName}"
-                                       Width="70"/>
-                            <TextBlock Name="Email"
-                                       Text="{Binding CustomerEmail}"
-                                       Width="70"/>
-                            <TextBlock Name="Phonenr"
-                                       Text="{Binding CustomerPhonenumber}"
-                                       Width="70"/>
-                            <TextBlock Name="Createdby"
-                                       Text="{Binding Createdby}"
-                                       Width="70"/>
-                            <TextBlock Name="Created"
-                                       Text="{Binding CreationTime}"
+                            <TextBlock Name="Status" Margin="10"
+                                       Text="{x:Bind Status}"
                                        Width="50"/>
+                            <TextBlock Name="Description" Margin="10" 
+                                       Text="{x:Bind Description}"
+                                       Width="150"/>
+                            <TextBlock Name="Firstname" Margin="10"
+                                       Text="{x:Bind CustomerFirstName}"
+                                       Width="80"/>
+                            <TextBlock Name="Lastname" Margin="10"
+                                       Text="{x:Bind CustomerLastName}"
+                                       Width="80"/>
+                            <TextBlock Name="Email" Margin="10"
+                                       Text="{x:Bind CustomerEmail}"
+                                       Width="180"/>
+                            <TextBlock Name="Phonenr" Margin="10"
+                                       Text="{x:Bind CustomerPhonenumber}"
+                                       Width="100"/>
+                            <TextBlock Name="Createdby" Margin="10"
+                                       Text="{x:Bind Createdby}"
+                                       Width="100"/>
+                            <TextBlock Name="Created" Margin="10"
+                                       Text="{x:Bind CreationTime}"
+                                       Width="150"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </RelativePanel>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Width="1200">
             
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Description" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
@@ -102,6 +103,7 @@
             <StackPanel VerticalAlignment="Stretch" Width="auto">
                 <TextBlock Text="Status" Margin="10,10,0,0"/>
                 <ComboBox x:Name="Update" HorizontalAlignment="Left" Margin="10,10,0,0" PlaceholderText="Status..." Height="34" Width="250">
+                    <x:String>Pending</x:String>
                     <x:String>Active</x:String>
                     <x:String>Closed</x:String>
                 </ComboBox>                

@@ -12,7 +12,7 @@ using Databas.Inlämningsuppgift2.Views;
 
 namespace Databas.Inlämningsuppgift2.Services
 {
-    public static class ErrandService
+    public /*static */class ErrandService
     {
 
         public static async Task CreateErrandAsync(string description, DateTime creationTime, string customerFirstName, string customerLastName, string customerEmail, int? customerPhonenumber, string status, string category, string createdby)
@@ -29,6 +29,7 @@ namespace Databas.Inlämningsuppgift2.Services
 
         //    var output = await context.Errand.ToListAsync();
         //    return output;
+            
         //}
 
         //private static async Task ListAllErrandsAsync()
@@ -36,23 +37,41 @@ namespace Databas.Inlämningsuppgift2.Services
         //    var errands = await GetErrandsAsync();
         //    foreach (var errand in errands)
         //    {
-                
+
         //    }
         //}
 
-        //public static async Task<Errand> GetErrandAsync(int id)
-        //{
-        //    using DataContext context = new DataContext();
+        ////using DataContext context = new DataContext();
 
-        //    return await context.Errands.FindAsync(id);
-        //}
+        ////var output = context.Errand.ToListAsync();
 
-        //public static async Task<IEnumerable<Errand>> GetErrandsByCompletedAsync(bool completed)
-        //{
-        //    using DataContext context = new DataContext();
+        ////lvActive.ItemsSource = output;
 
-        //    return await context.Errands.Where(Errand => Errand.Completed == completed).ToListAsync();
-        //}
+
+        ////--------------------------------------------------
+
+        ////using DataContext context = new DataContext();
+        ////var query = "select * from Errand";
+
+
+        ////try
+        ////{
+        ////    lvActive.ItemsSource = query.ToList();
+        ////}
+        ////catch { }
+
+
+        ////--------------------------------------------------
+
+        ////using DataContext context = new DataContext();
+        ////var query = "select * from Errand";
+        ////var myList = new List<string> { query };
+
+        ////try
+        ////{
+        ////    lvActive.ItemsSource = myList;
+        ////}
+        ////catch { }
 
         public static async Task UpdateErrandAsync(int id, string status, string comment)
         {
@@ -69,17 +88,49 @@ namespace Databas.Inlämningsuppgift2.Services
             }
         }
 
-        //public static async Task RemoveErrandAsync(int id)
-        //{
-        //    using DataContext context = new DataContext();
+        public static ObservableCollection<Errand> GetErrands(string connectionString)
+        {
+            const string GetErrandsQuery = "select * from Errand";
 
-        //    var Errand = await context.Errands.FindAsync(id);
-
-        //    if (Errand != null)
-        //    {
-        //        context.Errands.Remove(Errand);
-        //        await context.SaveChangesAsync();
-        //    }
-        //}
+            var errands = new ObservableCollection<Errand>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.CommandText = GetErrandsQuery;
+                            using (SqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    var errand = new Errand();
+                                    errand.Id = reader.GetInt32(0);
+                                    errand.Description = reader.GetString(1);
+                                    errand.CreationTime = reader.GetDateTime(2);
+                                    errand.CustomerFirstName= reader.GetString(3);
+                                    errand.CustomerLastName = reader.GetString(4);
+                                    errand.CustomerEmail = reader.GetString(5);
+                                    errand.CustomerPhonenumber = reader.GetInt32(6);
+                                    errand.Status = reader.GetString(7);
+                                    errand.Category = reader.GetString(8);
+                                    errand.Createdby = reader.GetString(9);
+                                    errands.Add(errand);
+                                }
+                            }
+                        }
+                    }
+                }
+                return errands;
+            }
+            catch
+            {
+                
+            }
+            return null;
+        }
     }
 }

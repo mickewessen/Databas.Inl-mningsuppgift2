@@ -28,6 +28,9 @@ namespace Databas.Inlämningsuppgift2.Models
             Comment = comment;
         }
 
+        public Errand()
+        {
+        }
 
         [Key]
         public int Id { get; set; }

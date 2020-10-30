@@ -17,6 +17,8 @@ using Databas.Inlämningsuppgift2.Services;
 using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -28,7 +30,6 @@ namespace Databas.Inlämningsuppgift2.Views
     /// </summary>
     public sealed partial class BlankPage2 : Page
     {
-
         public string UpdateStatus()
         {
             string statusText = Update.SelectionBoxItem.ToString();
@@ -49,14 +50,7 @@ namespace Databas.Inlämningsuppgift2.Views
 
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
-            using DataContext context = new DataContext();
-            var query = "select * from Errand";
-            
-            try
-            {
-                lvOpen.ItemsSource = query.ToList();
-            }
-            catch { }
+            lvActive.ItemsSource = ErrandService.GetErrands((Application.Current as App).connectionString);
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -67,7 +61,8 @@ namespace Databas.Inlämningsuppgift2.Views
                 updatelabel.Visibility = Visibility.Visible;
             }
             catch { }
-        }        
-        
+        }       
+
+
     }
 }

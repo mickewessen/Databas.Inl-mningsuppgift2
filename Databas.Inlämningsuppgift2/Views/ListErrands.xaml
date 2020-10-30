@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="800">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="900">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -46,6 +46,7 @@
                             <TextBlock Text="Email" Margin="8,0" Width="70"/>
                             <TextBlock Text="Phonenr" Margin="8,0" Width="70"/>
                             <TextBlock Text="Createdby" Margin="8,0" Width="70"/>
+                            <TextBlock Text="Created" Margin="8,0" Width="50"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.HeaderTemplate>                
@@ -61,6 +62,9 @@
                             <TextBlock Name="Status"
                                        Text="{Binding Status}"
                                        Width="70"/>
+                            <TextBlock Name="Description"
+                                       Text="{Binding Description}"
+                                       Width="120"/>
                             <TextBlock Name="Firstname"
                                        Text="{Binding CustomerFirstName}"
                                        Width="70"/>
@@ -78,7 +82,7 @@
                                        Width="70"/>
                             <TextBlock Name="Created"
                                        Text="{Binding CreationTime}"
-                                       Width="70"/>
+                                       Width="50"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -95,7 +99,7 @@
 
             </StackPanel>
             
-            <StackPanel VerticalAlignment="Stretch" Width="350">
+            <StackPanel VerticalAlignment="Stretch" Width="auto">
                 <TextBlock Text="Status" Margin="10,10,0,0"/>
                 <ComboBox x:Name="Update" HorizontalAlignment="Left" Margin="10,10,0,0" PlaceholderText="Status..." Height="34" Width="250">
                     <x:String>Active</x:String>

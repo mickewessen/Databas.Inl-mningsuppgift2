@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="800">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="900">
 
     <Grid Margin="10">
 
@@ -36,6 +36,7 @@
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
             <ComboBox x:Name="Status" HorizontalAlignment="Left" 
                      Margin="10,10,0,0" PlaceholderText="Status..." Height="34" Width="250" TabIndex="6">
+                <x:String>Pending</x:String>
                 <x:String>Active</x:String>
                 <x:String>Closed</x:String>
             </ComboBox>

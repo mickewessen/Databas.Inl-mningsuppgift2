@@ -50,12 +50,11 @@ namespace Databas.Inlämningsuppgift2.Views
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
             using DataContext context = new DataContext();
-            string errand = "select * Errand"; 
-
-            lvOpen.ItemsSource = errand.ToList();
+            var query = "select * from Errand";
+            
             try
             {
-
+                lvOpen.ItemsSource = query.ToList();
             }
             catch { }
         }

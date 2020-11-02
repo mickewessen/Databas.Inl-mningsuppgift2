@@ -101,7 +101,7 @@
                 <TextBlock Text="Email" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
                 <TextBox x:Name="emailLoad" PlaceholderText="x@x.com" Width="200" HorizontalAlignment="Left" Height="auto" Margin="10"/>
                 <TextBlock Text="Phonenumber" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
-                <TextBox x:Name="phonenumberLoad" PlaceholderText="+46 00 000 00 00" Width="200" HorizontalAlignment="Left" Height="auto" Margin="10"/>
+                <TextBox x:Name="phonenumberLoad" PlaceholderText="+46 00 000 00 00" Width="150" HorizontalAlignment="Left" Height="auto" Margin="10"/>
                 <TextBlock Text="Comments" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
                 <TextBox x:Name="comments" PlaceholderText="Add new comment" Width="400" HorizontalAlignment="Left" Height="auto" Margin="10"/>
 

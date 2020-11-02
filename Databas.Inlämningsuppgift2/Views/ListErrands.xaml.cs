@@ -19,6 +19,8 @@ using Microsoft.Data.SqlClient;
 using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
+using Windows.Devices.Input;
+using System.Globalization;
 
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -30,12 +32,19 @@ namespace Databas.Inlämningsuppgift2.Views
     /// </summary>
     public sealed partial class BlankPage2 : Page
     {
+
+        public BlankPage2()
+        {
+            this.InitializeComponent();
+        }
+
         public string UpdateStatus()
         {
             string statusText = Update.SelectionBoxItem.ToString();
-            
+
             return statusText;
         }
+
         public string Comment()
         {
             string commentText = comments.Text;
@@ -43,29 +52,37 @@ namespace Databas.Inlämningsuppgift2.Views
             return commentText;
         }
 
-        public BlankPage2()
-        {
-            this.InitializeComponent();
-        }
-
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
             lvActive.ItemsSource = ErrandService.GetErrandsActive((Application.Current as App).connectionString);
-        }
-
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ErrandService.UpdateErrandAsync(11, UpdateStatus(), Comment()).GetAwaiter();
-                updatelabel.Visibility = Visibility.Visible;
-            }
-            catch { }
         }
 
         private void btnClosed_Click(object sender, RoutedEventArgs e)
         {
             lvActive.ItemsSource = ErrandService.GetErrandsClosed((Application.Current as App).connectionString);
         }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ErrandService.UpdateErrandAsync(Convert.ToInt32(idLoad.Text), UpdateStatus(), Comment()).GetAwaiter();
+                updatelabel.Visibility = Visibility.Visible;
+            }
+            catch { }
+        }
+
+        private void lvActive_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Errand errand = (Errand)lvActive.SelectedItem;
+            idLoad.Text = Convert.ToString(errand.Id);
+            descriptionLoad.Text = errand.Description;
+            firstnameLoad.Text = errand.CustomerFirstName;
+            lastnameLoad.Text = errand.CustomerLastName;
+            phonenumberLoad.Text = Convert.ToString(errand.CustomerPhonenumber);
+            emailLoad.Text = errand.CustomerEmail;
+
+        }
+
     }
 }

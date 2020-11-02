@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="auto">
-
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
@@ -25,15 +25,14 @@
         </StackPanel>
 
         <RelativePanel Grid.Row="1" Width="1200" Margin="10">
-            <ListView x:Name="lvActive"
-                      Width="1200"
-                  SelectionMode="Single"
+            <ListView x:Name="lvActive" IsItemClickEnabled="True" ItemClick="lvActive_ItemClick"
+                      Width="1200"                  
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                   ScrollViewer.IsVerticalRailEnabled="True"
                   ScrollViewer.VerticalScrollMode="Enabled"
                   ScrollViewer.HorizontalScrollMode="Enabled"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                  ScrollViewer.IsHorizontalRailEnabled="True"
+                  ScrollViewer.IsHorizontalRailEnabled="True" SelectedIndex="0"
                   >
                 <ListView.HeaderTemplate>
                     <DataTemplate>
@@ -93,17 +92,26 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" Width="1200">
             
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Description" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
-                <TextBox x:Name="descriptionLoad" PlaceholderText="Description" Width="400" HorizontalAlignment="Left" Height="auto" Margin="10"/>
+                <TextBlock Text="Id" TextWrapping="Wrap" Width="70" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
+                <TextBox x:Name="idLoad" PlaceholderText="Id" Width="70" HorizontalAlignment="Left" Height="auto" Margin="10"/>
+                <TextBlock Text="Firstname" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
+                <TextBox x:Name="firstnameLoad" PlaceholderText="Firstname" Width="200" HorizontalAlignment="Left" Height="auto" Margin="10"/>
+                <TextBlock Text="Lastname" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
+                <TextBox x:Name="lastnameLoad" PlaceholderText="Lastname" Width="200" HorizontalAlignment="Left" Height="auto" Margin="10"/>
+                <TextBlock Text="Email" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
+                <TextBox x:Name="emailLoad" PlaceholderText="x@x.com" Width="200" HorizontalAlignment="Left" Height="auto" Margin="10"/>
+                <TextBlock Text="Phonenumber" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
+                <TextBox x:Name="phonenumberLoad" PlaceholderText="+46 00 000 00 00" Width="200" HorizontalAlignment="Left" Height="auto" Margin="10"/>
                 <TextBlock Text="Comments" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
                 <TextBox x:Name="comments" PlaceholderText="Add new comment" Width="400" HorizontalAlignment="Left" Height="auto" Margin="10"/>
 
             </StackPanel>
             
             <StackPanel VerticalAlignment="Stretch" Width="auto">
+                <TextBlock Text="Description" TextWrapping="Wrap" Width="400" HorizontalAlignment="Left" Margin=" 10,10,0,0"/>
+                <TextBox x:Name="descriptionLoad" PlaceholderText="Description" Width="400" HorizontalAlignment="Left" Height="auto" Margin="10" TextWrapping="Wrap"/>
                 <TextBlock Text="Status" Margin="10,10,0,0"/>
                 <ComboBox x:Name="Update" HorizontalAlignment="Left" Margin="10,10,0,0" PlaceholderText="Status..." Height="34" Width="250">
-                    <x:String>Pending</x:String>
                     <x:String>Active</x:String>
                     <x:String>Closed</x:String>
                 </ComboBox>                
@@ -118,6 +126,7 @@
                          TextWrapping="Wrap" VerticalAlignment="Top"
                          Width="250" 
                          Visibility="Collapsed"/>
+
 
             </StackPanel>
             

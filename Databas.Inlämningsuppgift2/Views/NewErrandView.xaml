@@ -36,9 +36,7 @@
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
             <ComboBox x:Name="Status" HorizontalAlignment="Left" 
                      Margin="10,10,0,0" PlaceholderText="Status..." Height="34" Width="250" TabIndex="6">
-                <x:String>Pending</x:String>
-                <x:String>Active</x:String>
-                <x:String>Closed</x:String>
+                <x:String>New</x:String>
             </ComboBox>
             <ComboBox x:Name="Category" HorizontalAlignment="Left" 
                      Margin="10,10,0,0" PlaceholderText="Category..." Height="34" Width="250" TabIndex="7">
